@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PaymentActivity"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:showDividers="middle"
+    android:divider="@drawable/divider8p">
+
+    <TextView
+        android:id="@+id/mop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Select Mode of Payment" />
+    <TextView
+        android:id="@+id/showCost"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Total Cost is:" />
+    <TextView
+        android:id="@+id/showCost2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Total Cost is:" />
+
+
+    <Button
+        android:id="@+id/mpesa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="MPESA" />
+
+    <Button
+        android:id="@+id/card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="CARD" />
+</LinearLayout>
