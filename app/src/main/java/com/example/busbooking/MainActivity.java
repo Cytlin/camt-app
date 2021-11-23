@@ -101,6 +101,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent= new Intent(getApplicationContext(),PaymentActivity.class);
                 intent.putExtras(bundle);
                 startActivity(intent);
+                saveData();
 
             }
         });

@@ -18,7 +18,7 @@ public class MyTrips extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_trips);
         Bundle bundle = getIntent().getExtras();
-        listView= findViewById(listView);
+        listView= findViewById(R.id.listView);
 
         if (bundle != null) {
             String date = bundle.getString("date");
@@ -26,17 +26,16 @@ public class MyTrips extends AppCompatActivity {
             String time = bundle.getString("time");
             String seats = bundle.getString("seats");
 
-            if (tripsArray.contains(date || route || time||seats)){
-                Toast.makeText(MyTrips.this, "Booking already exists", Toast.LENGTH_LONG).show();
-            }
-            else if (tripsArray.contains(date==null && route==null && time==null && seats==null)){
+
+            if (tripsArray.contains(date==null && route==null && time==null && seats==null)){
                 Toast.makeText(MyTrips.this, "No bookings yet", Toast.LENGTH_LONG).show();
             }
             else{
-                tripsArray.add(date && route && time && seats);
+                tripsArray.add(date);
+                tripsArray.add(route);
+                tripsArray.add(seats);
                 ArrayAdapter<String> myTripsAdapter = new ArrayAdapter<String>(MyTrips.this,android.R.layout.simple_list_item_1, tripsArray);
-                show.setAdapter(myTripsAdapter);
-
+                listView.setAdapter(myTripsAdapter);
 
             }
 
