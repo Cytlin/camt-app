@@ -33,8 +33,8 @@ public class MainActivity extends AppCompatActivity {
     Button button;
     DatePickerDialog.OnDateSetListener mDateSetListener;
     Spinner route,time;
-    String[] routeString= new String[] {"Select Route","CBD to KASARANI", "CBD to JUJA", "CBD to ROYSAMBU", "CBD to KAHAWASUKARI", "KASARANI to CBD", "JUJA to CBD", "ROYSAMBU to CBD"};
-    String[] timeString= new String[] {"Select Time","7:00am", "9:00am", "11:00am", "1:00pm", "3:00pm", "5:00pm", "7:00pm"};
+    String[] routeArray= new String[] {"Select Route","CBD to KASARANI", "CBD to JUJA", "CBD to ROYSAMBU", "CBD to KAHAWASUKARI", "KASARANI to CBD", "JUJA to CBD", "ROYSAMBU to CBD"};
+    String[] timeArray= new String[] {"Select Time","7:00am", "9:00am", "11:00am", "1:00pm", "3:00pm", "5:00pm", "7:00pm"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,12 +76,12 @@ public class MainActivity extends AppCompatActivity {
         };
 
         //route dropdown Adapter
-        ArrayAdapter<String> routeAdapter=new ArrayAdapter<>(MainActivity.this,android.R.layout.simple_list_item_1,routeString);
+        ArrayAdapter<String> routeAdapter=new ArrayAdapter<>(MainActivity.this,android.R.layout.simple_list_item_1,routeArray);
         routeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         route.setAdapter(routeAdapter);
 
         //time dropdown Adapter
-        ArrayAdapter<String> timeAdapter=new ArrayAdapter<>(MainActivity.this,android.R.layout.simple_list_item_1,timeString);
+        ArrayAdapter<String> timeAdapter=new ArrayAdapter<>(MainActivity.this,android.R.layout.simple_list_item_1,timeArray);
         timeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         time.setAdapter(timeAdapter);
 
@@ -106,6 +106,27 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+    private void saveData(){
+        String dateString= date.getText().toString().trim();
+        String routeString =route.getSelectedItem().toString();
+        String timeString= time.getSelectedItem().toString();
+        String seatsString= seats.getText().toString().trim();
+
+        Bundle bundle= new Bundle();
+        //put the values in the bundle
+        bundle.putString("date",dateString);
+        bundle.putString("route",routeString);
+        bundle.putString("time",timeString);
+        bundle.putString("seats",seatsString);
+
+
+        //create intent
+        Intent intent2= new Intent(getApplicationContext(),MyTrips.class);
+        //send all activity through bundle
+        intent2.putExtras(bundle);
+        startActivity(intent2);
+    }
+
 
 
 }
